@@ -1,0 +1,17 @@
+# project.yaml
+
+apiVersion: v1alpha
+kind: Project
+metadata:
+  name: ai-02-14
+spec:
+  repository:
+    url: git@github.com:ajcwebdev/ai-02-14.git
+
+  tasks:
+    - name: Code Review
+      pipeline_file: .semaphore/semaphore.yml
+      branch: .*
+    - name: Release Notes
+      pipeline_file: .semaphore/release-notes.yml
+      branch: refs/tags/v.*

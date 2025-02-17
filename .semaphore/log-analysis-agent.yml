@@ -1,0 +1,35 @@
+# .semaphore/log-analysis-agent.yml
+
+version: v1.0
+name: Log Analysis
+
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu2004
+
+blocks:
+  - name: Build and Test
+    task:
+      secrets:
+        - name: build-and-test-secrets
+      jobs:
+        - name: Run Build
+          commands:
+            - checkout
+            - npm install
+            - npm run build
+            - npm run test
+    dependencies: []
+
+  - name: Analyze Logs
+    task:
+      secrets:
+        - name: log-analysis-secrets
+      jobs:
+        - name: Debug Analysis
+          commands:
+            - npm install
+            - npx tsx src/logs.ts
+    dependencies:
+      - Build and Test

@@ -1,0 +1,23 @@
+{
+  "name": "ai-02-14",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "commit-review": "tsx src/commit.ts",
+    "release-notes": "tsx src/release.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@ai-sdk/openai": "^1.1.11",
+    "ai": "^4.1.38",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.4",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3"
+  }
+}
