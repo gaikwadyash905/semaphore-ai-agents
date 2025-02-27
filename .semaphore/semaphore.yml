@@ -11,19 +11,16 @@ agent:
 global_job_config:
   prologue:
     commands:
-      # Attempt a full-depth checkout to ensure all commits are available
       - checkout --depth=full
-      - git fetch --unshallow || true
-      - git fetch --depth=2147483647 || true
       - npm install
 
 blocks:
   - name: Commit Review
     task:
       secrets:
-        - name: pr-review-secrets-02-14
+        - name: pr-review-secrets
       jobs:
         - name: Review Commits
           commands:
-            - npx tsx src/commit.ts
+            - npx tsx src/index.ts
     dependencies: []
