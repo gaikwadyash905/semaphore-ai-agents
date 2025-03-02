@@ -22,5 +22,6 @@ blocks:
       jobs:
         - name: Review Commits
           commands:
-            - npx tsx src/index.ts
+            - npx tsx src/index.ts | tee ai-review.log
+            - artifact push job ai-review.log
     dependencies: []
